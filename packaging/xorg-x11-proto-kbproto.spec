@@ -7,6 +7,7 @@ Group:      Development/System
 License:    MIT
 URL:        http://www.x.org
 Source0:    http://xorg.freedesktop.org/releases/individual/proto/kbproto-%{version}.tar.gz
+Source1001: packaging/xorg-x11-proto-kbproto.manifest 
 BuildRequires:  pkgconfig(xorg-macros)
 Provides:   kbproto
 
@@ -21,6 +22,7 @@ Description: %{summary}
 
 
 %build
+cp %{SOURCE1001} .
 
 %reconfigure --disable-shared
 
@@ -34,6 +36,7 @@ rm -rf %{buildroot}
 
 
 %files
+%manifest xorg-x11-proto-kbproto.manifest
 %defattr(-,root,root,-)
 %{_libdir}/pkgconfig/kbproto.pc
 %{_includedir}/X11/extensions/XKB.h
